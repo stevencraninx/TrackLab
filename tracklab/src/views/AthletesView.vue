@@ -24,6 +24,9 @@
         <button @click="router.push('/athletes/new')">
           Add Athlete
         </button>
+        <button @click="athleteStore.resetAthletes()">
+          Reset Athletes
+        </button>
       </div>
     </div>
 

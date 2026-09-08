@@ -10,7 +10,7 @@ export const athletes: Athlete[] = [
   {
     id: 2,
     name: 'Pieter Janssens',
-    country: 'BEL',
+    country: 'NED',
     personalBest: 9.94,
   },
   {

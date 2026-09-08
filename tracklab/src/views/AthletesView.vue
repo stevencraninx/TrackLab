@@ -100,7 +100,8 @@ function goToAthlete(id: number) {
 
 import { computed, ref } from 'vue'
 
-import { athletes } from '@/data/athletes'
+import { useAthleteStore } from '@/stores/athletes'
+const athleteStore = useAthleteStore()
 
 const searchQuery = ref('')
 const selectedCountry = ref('all')
@@ -108,34 +109,26 @@ const selectedCountry = ref('all')
 const sortColumn = ref<'name' | 'country' | 'personalBest'>('name')
 const sortDirection = ref<'asc' | 'desc'>('asc')
 
-const athletesCount = athletes.length
+const athletesCount = computed(() => {
+  return athleteStore.athletes.length
+})
 
 const countryCount = computed(() => {
-  const foundCountries: string[] = []
-
-  for (let i = 0; i < athletes.length; i++) {
-    if (!foundCountries.includes(athletes[i].country)) {
-      foundCountries.push(athletes[i].country)
-    }
-  }
-
-  return foundCountries.length
+  return new Set(
+  athleteStore.athletes.map(a => a.country)
+  ).size
 })
 
 const fastestPB = computed(() => {
-  let foundPB = 0
-
-  for (let i = 0; i < athletes.length; i++) {
-    if (foundPB === 0 || athletes[i].personalBest < foundPB) {
-      foundPB = athletes[i].personalBest
-    }
-  }
-
-  return foundPB
+  return Math.min(
+    ...athleteStore.athletes.map(
+      athlete => athlete.personalBest
+    )
+  )
 })
 
 const filteredAthletes = computed(() => {
-  return athletes.filter((athlete) => {
+  return athleteStore.athletes.filter((athlete) => {
     const matchesName = athlete.name
       .toLowerCase()
       .includes(searchQuery.value.toLowerCase())

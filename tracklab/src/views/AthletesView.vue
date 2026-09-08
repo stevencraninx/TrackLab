@@ -67,7 +67,9 @@
         <tbody>
           <tr
             v-for="athlete in sortedAthletes"
-            :key="athlete.id">
+            :key="athlete.id"
+            @click="goToAthlete(athlete.id)"
+            class="athlete-row">
             <td class="athlete-name">
               {{ athlete.name }}
             </td>
@@ -87,6 +89,15 @@
 </template>
 
 <script setup lang="ts">
+
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+function goToAthlete(id: number) {
+  router.push(`/athletes/${id}`)
+}
+
 import { computed, ref } from 'vue'
 
 import { athletes } from '@/data/athletes'
@@ -268,5 +279,13 @@ tbody tr:hover {
 
 .empty-state {
   margin-top: 32px;
+}
+
+.athlete-row {
+  cursor: pointer;
+}
+
+.athlete-row:hover {
+  background: rgba(255, 255, 255, 0.05);
 }
 </style>

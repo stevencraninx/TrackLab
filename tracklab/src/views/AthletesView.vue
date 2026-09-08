@@ -91,7 +91,7 @@
               <button @click="athleteStore.removeAthlete(athlete.id)">
                 Remove
               </button>
-              <button @click="editAthlete">
+              <button @click="editAthlete(athlete.id)">
                 Edit athlete
               </button>
             </td>
@@ -112,6 +112,9 @@ const router = useRouter()
 
 function goToAthlete(id: number) {
   router.push(`/athletes/${id}`)
+}
+function editAthlete(id: number) {
+  router.push(`/athletes/${id}/edit`)
 }
 
 import { computed, ref } from 'vue'
@@ -178,10 +181,6 @@ const sortedAthletes = computed(() => {
       : -comparison
   })
 })
-
-function editAthlete() {
-  router.push(`/athletes/${athlete.value?.id}/edit`)
-}
 
 function sortBy(column: 'name' | 'country' | 'personalBest') {
   if (sortColumn.value === column) {

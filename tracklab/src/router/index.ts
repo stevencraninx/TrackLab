@@ -4,6 +4,7 @@ import DashboardView from '@/views/DashboardView.vue'
 import AthletesView from '@/views/AthletesView.vue'
 import TrainingsView from '@/views/TrainingsView.vue'
 import AthleteDetailView from '@/views/AthleteDetailView.vue'
+import AthleteCreateView from '@/views/AthleteCreateView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -24,6 +25,11 @@ const router = createRouter({
       path: '/athletes/:id',
       name: 'athlete-detail',
       component: AthleteDetailView,
+    },
+    {
+      path: '/athletes/new',
+      name: 'add-athlete',
+      component: AthleteCreateView,
     },
     {
       path: '/trainings',

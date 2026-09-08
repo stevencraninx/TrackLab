@@ -20,6 +20,11 @@
           </div>
         </div>
       </div>
+      <div class="header-actions">
+        <button @click="router.push('/athletes/new')">
+          Add Athlete
+        </button>
+      </div>
     </div>
 
     <div class="filters">
@@ -35,6 +40,7 @@
         <option value="GER">Germany</option>
       </select>
     </div>
+
 
 
     <div class="table-container">

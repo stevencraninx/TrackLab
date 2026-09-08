@@ -1,11 +1,18 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 import { athletes as initialAthletes } from '@/data/athletes'
 import type { Athlete } from '@/types/athlete'
 
+const STORAGE_KEY = 'tracklab-athletes'
+
 export const useAthleteStore = defineStore('athletes', () => {
-  const athletes = ref<Athlete[]>([...initialAthletes])
+  const savedAthletes = localStorage.getItem(STORAGE_KEY)
+  const athletes = ref<Athlete[]>(
+    savedAthletes
+      ? JSON.parse(savedAthletes)
+      : [...initialAthletes]
+  )
 
   function getAthleteById(id: string) {
     return athletes.value.find((athlete) => athlete.id === id)
@@ -15,9 +22,32 @@ export const useAthleteStore = defineStore('athletes', () => {
     athletes.value.push(athlete)
   }
 
+  function removeAthlete(id: string) {
+    athletes.value = athletes.value.filter(
+      athlete => athlete.id !== id
+    )
+  }
+  function resetAthletes() {
+    athletes.value = [...initialAthletes]
+    localStorage.removeItem(STORAGE_KEY)
+  }
+
+  watch(
+    athletes,
+    (newAthletes) => {
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(newAthletes)
+      )
+    },
+    { deep: true }
+  )
+
   return {
     athletes,
     getAthleteById,
     addAthlete,
+    removeAthlete,
+    resetAthletes,
   }
 })

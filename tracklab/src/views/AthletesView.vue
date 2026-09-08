@@ -85,6 +85,11 @@
             <td>
               {{ athlete.personalBest }}
             </td>
+            <td>
+              <button @click="athleteStore.removeAthlete(athlete.id)">
+                Remove
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>

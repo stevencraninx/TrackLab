@@ -14,7 +14,7 @@ export const useAthleteStore = defineStore('athletes', () => {
       : [...initialAthletes]
   )
 
-  function getAthleteById(id: string) {
+  function getAthleteById(id: number) {
     return athletes.value.find((athlete) => athlete.id === id)
   }
 
@@ -30,6 +30,16 @@ export const useAthleteStore = defineStore('athletes', () => {
   function resetAthletes() {
     athletes.value = [...initialAthletes]
     localStorage.removeItem(STORAGE_KEY)
+  }
+
+  function updateAthlete(updatedAthlete: Athlete) {
+    const index = athletes.value.findIndex(
+      athlete => athlete.id === updatedAthlete.id
+    )
+
+    if (index !== -1) {
+      athletes.value[index] = updatedAthlete
+    }
   }
 
   watch(
@@ -49,5 +59,6 @@ export const useAthleteStore = defineStore('athletes', () => {
     addAthlete,
     removeAthlete,
     resetAthletes,
+    updateAthlete,
   }
 })

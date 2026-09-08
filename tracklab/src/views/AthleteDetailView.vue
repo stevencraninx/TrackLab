@@ -9,6 +9,9 @@
         <h1>{{ athlete.name }}</h1>
         <p>{{ athlete.country }}</p>
       </div>
+      <button @click="editAthlete">
+        Edit athlete
+      </button>
     </div>
 
     <div class="stats-grid">
@@ -56,6 +59,10 @@ const athlete = computed(() => {
     (athlete) => athlete.id === Number(route.params.id)
   )
 })
+
+function editAthlete() {
+  router.push(`/athletes/${athlete.value?.id}/edit`)
+}
 </script>
 
 <style scoped>

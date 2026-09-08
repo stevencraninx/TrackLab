@@ -77,20 +77,22 @@
           <tr
             v-for="athlete in sortedAthletes"
             :key="athlete.id"
-            @click="goToAthlete(athlete.id)"
             class="athlete-row">
-            <td class="athlete-name">
+            <td class="athlete-name" @click="goToAthlete(athlete.id)">
               {{ athlete.name }}
             </td>
-            <td>
+            <td @click="goToAthlete(athlete.id)">
               {{ athlete.country }}
             </td>
-            <td>
+            <td @click="goToAthlete(athlete.id)">
               {{ athlete.personalBest }}
             </td>
             <td>
               <button @click="athleteStore.removeAthlete(athlete.id)">
                 Remove
+              </button>
+              <button @click="editAthlete">
+                Edit athlete
               </button>
             </td>
           </tr>
@@ -176,6 +178,10 @@ const sortedAthletes = computed(() => {
       : -comparison
   })
 })
+
+function editAthlete() {
+  router.push(`/athletes/${athlete.value?.id}/edit`)
+}
 
 function sortBy(column: 'name' | 'country' | 'personalBest') {
   if (sortColumn.value === column) {

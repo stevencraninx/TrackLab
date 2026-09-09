@@ -94,10 +94,14 @@
 import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
-import { results } from '@/data/results'
+import { useResultStore } from '@/stores/results'
+import { useCompetitionStore } from '@/stores/competitions'
 import { useAthleteStore } from '@/stores/athletes'
 
 const router = useRouter()
+
+const resultStore = useResultStore()
+const competitionStore = useCompetitionStore()
 const athleteStore = useAthleteStore()
 
 const searchQuery = ref('')
@@ -105,13 +109,22 @@ const selectedCompType = ref('all')
 const selectedCompDistance = ref('all')
 
 const filteredResults = computed(() => {
-  return results.filter((result) => {
-
+  return resultStore.results.filter((result) => {
     const athlete = athleteStore.athletes.find(
       athlete => athlete.id === result.athleteId
     )
 
-    if (!athlete) {
+    const competition = competitionStore.getCompetitionById(
+      result.competitionId
+    )
+
+    console.log('RESULT:', result)
+
+    console.log('ATHLETE:', athlete)
+
+    console.log('COMPETITION:', competition)
+
+    if (!athlete || !competition) {
       return false
     }
 
@@ -119,15 +132,28 @@ const filteredResults = computed(() => {
       .toLowerCase()
       .includes(searchQuery.value.toLowerCase())
 
+    const matchesType =
+      selectedCompType.value === 'all' ||
+      competition.type === selectedCompType.value
+
     const matchesDistance =
       selectedCompDistance.value === 'all' ||
-      result.distance.toString() === selectedCompDistance.value
+      result.distance.toString() ===
+        selectedCompDistance.value
 
-    return matchesName && matchesDistance
+    return (
+      matchesName &&
+      matchesType &&
+      matchesDistance
+    )
   })
 })
 
-function getAthleteName(athleteId: number) {
+function getCompetition(competitionId: string) {
+  return competitionStore.getCompetitionById(competitionId)
+}
+
+function getAthleteName(athleteId: string) {
   const athlete = athleteStore.athletes.find(
     athlete => athlete.id === athleteId
   )
@@ -135,7 +161,7 @@ function getAthleteName(athleteId: number) {
   return athlete?.name ?? 'Unknown athlete'
 }
 
-function getAthleteCountry(athleteId: number) {
+function getAthleteCountry(athleteId: string) {
   const athlete = athleteStore.athletes.find(
     athlete => athlete.id === athleteId
   )

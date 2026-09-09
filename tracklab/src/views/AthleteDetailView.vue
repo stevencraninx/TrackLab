@@ -28,9 +28,61 @@
 
     <div class="section">
       <h2>Performance</h2>
+      <h3>Personal bests</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Distance</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td> 500m </td>
+            <td> {{pb500}}</td>
+          </tr>
+          <tr>
+            <td> 1000m </td>
+            <td>{{ pb1000 }}</td>
+          </tr>
+          <tr>
+            <td> 1500m </td>
+            <td>{{ pb1500 }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="section">
+      <h2>Competition Results</h2>
 
-      <p>
-        Performance data for {{ athlete.name }} will appear here.
+      <table v-if="athleteResults.length">
+        <thead>
+          <tr>
+            <th>Competition</th>
+            <th>Distance</th>
+            <th>Round</th>
+            <th>Position</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr
+            v-for="result in athleteResults"
+            :key="result.id"
+          >
+            <td> {{ getCompetitionName(result.competitionId) }} </td>
+            <td>{{ result.distance }}m</td>
+            <td>{{ result.round }}</td>
+
+            <td>#{{ result.position }}</td>
+            <td>{{ result.time }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p v-else>
+        No results available.
       </p>
     </div>
   </div>
@@ -45,7 +97,12 @@ import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 import { useAthleteStore } from '@/stores/athletes'
+import { useResultStore } from '@/stores/results'
+import { useCompetitionStore } from '@/stores/competitions'
+
 const athleteStore = useAthleteStore()
+const resultStore = useResultStore()
+const competitionStore = useCompetitionStore()
 
 const route = useRoute()
 const router = useRouter()
@@ -56,8 +113,50 @@ const athlete = computed(() => {
   )
 })
 
+
+
+const athleteResults = computed(() => {
+  if (!athlete.value) return []
+
+  return resultStore.results.filter(
+    result => result.athleteId === athlete.value!.id
+  )
+
+})
+
+const pb500 = computed(() => {
+  if (!athlete.value) return []
+  const filterdRes = resultStore.results.filter(
+    result => result.athleteId === athlete.value!.id && result.distance === 500
+  )
+  return Math.min(...filterdRes.map(r => Number(r.time)))
+})
+
+const pb1000 = computed(() => {
+  if (!athlete.value) return []
+  const filterdRes = resultStore.results.filter(
+    result => result.athleteId === athlete.value!.id && result.distance === 1000
+  )
+  return Math.min(...filterdRes.map(r => Number(r.time)))
+})
+
+const pb1500 = computed(() => {
+  if (!athlete.value) return []
+  const filterdRes = resultStore.results.filter(
+    result => result.athleteId === athlete.value!.id && result.distance === 1500
+  )
+  return Math.min(...filterdRes.map(r => Number(r.time)))
+})
+
 function editAthlete() {
   router.push(`/athletes/${athlete.value?.id}/edit`)
+}
+function getCompetitionName(competitionId: string) {
+  return (
+    competitionStore.getCompetitionById(
+      competitionId
+    )?.name ?? 'Unknown'
+  )
 }
 </script>
 
@@ -113,5 +212,45 @@ function editAthlete() {
 
 .section h2 {
   margin-bottom: 16px;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+th {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0.7;
+}
+
+.sortable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.sortable:hover {
+  opacity: 1;
+}
+
+.competition-name {
+  font-weight: 600;
+}
+
+tbody tr:hover {
+  background: rgba(255, 255, 255, 0.03);
 }
 </style>

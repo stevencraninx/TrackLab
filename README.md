@@ -8,32 +8,38 @@ The project was built as a hands-on exercise to deepen my Vue knowledge while ap
 
 ## Features
 ### Dashboard
-KPI overview
-Athlete statistics
-Competition overview
-Performance insights
-Interactive charts
+KPI overview, Athlete statistics, Competition overview, Performance insights, chart
 ### Athlete Management
-View all athletes
-Search athletes
-Filter athletes
-Create athletes
-Edit athletes
-Delete athletes
-Athlete detail pages
+View all athletes, Search athletes, Filter athletes, Create athletes, Edit athletes, Delete athletes, Athlete detail pages
 ### Competition Management
-View competitions
-Create competitions
-Edit competitions
-Delete competitions
-Competition detail pages
+View competitions, Create competitions, Edit competitions, Delete competitions, Competition detail pages
 ### Results
-Competition results overview
-Athlete performance tracking
-Filtering by competition type
-Filtering by distance
-Athlete result history
+Competition results overview, Athlete performance tracking, Filtering by competition type, Filtering by distance, Athlete result history
 ### Persistence
-Data stored in localStorage
-Automatic persistence between sessions
+Data stored in localStorage, Automatic persistence between sessions
 
+## Tech Stack
+### Frontend
+Vue 3, Vue Router, Pinia, TypeScript, Vite
+### State Management
+Pinia Stores, Athletes, Competitions, Results
+### Data Visualisation
+Chart.js, Vue-ChartJS
+### Styling
+CSS Variables, Reusable UI Components, *Responsive Layout*
+
+## Concepts Demonstrated
+
+This project demonstrates:
+
+- Vue 3 Composition API
+- TypeScript integration
+- Pinia state management
+- Vue Router navigation
+- Component-driven architecture
+- Local Storage persistence
+- CRUD operations
+- Reactive computed properties
+- Form handling and validation
+- Dashboard visualisation
+- Modern UI design principles

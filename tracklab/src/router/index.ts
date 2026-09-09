@@ -14,6 +14,8 @@ import CompetitionDetailView from '@/views/CompetitionDetailView.vue'
 import CompetitionCreateView from '@/views/CompetitionCreateView.vue'
 import CompetitionEditView from '@/views/CompetitionEditView.vue'
 
+import ResultsView from '@/views/ResultsView.vue'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -62,6 +64,10 @@ const router = createRouter({
       path: '/competitions/:id/edit',
       name: 'edit-competition',
       component: CompetitionEditView,
+    },
+    {
+      path: '/results',
+      component: ResultsView,
     },
     {
       path: '/trainings',

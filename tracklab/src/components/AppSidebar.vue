@@ -17,6 +17,10 @@
         Competitions
       </RouterLink>
 
+      <RouterLink to="/results">
+        Results
+      </RouterLink>
+
       <RouterLink to="/trainings">
         Trainings
       </RouterLink>

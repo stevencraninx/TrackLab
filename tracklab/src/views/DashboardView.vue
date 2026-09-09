@@ -26,6 +26,7 @@
         <strong>{{ countryCount }}</strong>
       </div>
     </div>
+    <AthletesCountryChart class="barChart" />
     <section class="dashboard-section">
       <div class="section-header">
         <h2>Recent Competitions</h2>
@@ -103,6 +104,8 @@ import { computed } from 'vue'
 import { useAthleteStore } from '@/stores/athletes'
 import { useCompetitionStore } from '@/stores/competitions'
 import { useResultStore } from '@/stores/results'
+
+import AthletesCountryChart from '@/components/AthletesCountryChart.vue'
 
 const athleteStore = useAthleteStore()
 const competitionStore = useCompetitionStore()
@@ -324,4 +327,6 @@ const recentResults = computed(() => {
 
   font-weight: 700;
 }
+
+
 </style>

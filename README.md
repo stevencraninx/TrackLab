@@ -43,3 +43,37 @@ This project demonstrates:
 - Form handling and validation
 - Dashboard visualisation
 - Modern UI design principles
+
+
+# Installation
+
+## Clone the repository:
+git clone https://github.com/stevencraninx/TrackLab.git
+## Navigate to the project:
+cd TrackLab
+## Install dependencies:
+npm install
+## Run the development server:
+npm run dev
+## Build for production:
+npm run build
+
+# Future Improvements
+
+## Planned features:
+
+- Authentication
+- API integration
+- Performance analytics
+- Training management
+- Personal best progression charts
+- Export functionality
+- Dark mode support
+- Mobile optimisations
+
+Author
+
+Steven Peeters
+
+GitHub: https://github.com/stevencraninx
+

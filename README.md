@@ -28,6 +28,11 @@ Chart.js, Vue-ChartJS
 ### Styling
 CSS Variables, Reusable UI Components, *Responsive Layout*
 
+<img width="1919" height="992" alt="Screenshot 2026-09-09 at 16 05 34" src="https://github.com/user-attachments/assets/c622b31f-1eee-4a41-b8c3-da04888faf3a" />
+<img width="1920" height="719" alt="Screenshot 2026-09-09 at 16 05 58" src="https://github.com/user-attachments/assets/b9ef3e78-cb71-4936-8e1f-9475db7aa995" />
+<img width="1923" height="875" alt="Screenshot 2026-09-09 at 16 05 44" src="https://github.com/user-attachments/assets/2eae95d9-5215-4432-8fcf-dc96b919b04a" />
+
+
 ## Concepts Demonstrated
 
 This project demonstrates:

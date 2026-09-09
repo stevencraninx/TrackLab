@@ -6,25 +6,26 @@
         <p>Manage and analyse athlete performance.</p>
       </div>
       <div class="stats">
-          <div>
+          <div class="card">
             <strong>{{ athletesCount }}</strong>
             <span>Athletes</span>
           </div>
-          <div>
+          <div class="card">
             <strong>{{ countryCount }}</strong>
             <span>Countries</span>
           </div>
-          <div>
+          <div class="card">
             <strong>{{ fastestPB }}</strong>
             <span>Fastest PB</span>
           </div>
         </div>
       </div>
-      <div class="header-actions">
-        <button @click="router.push('/athletes/new')">
+      <div class="header-actions" style="margin-bottom:15px">
+        <button @click="router.push('/athletes/new')" class="btn btn-primary">
           Add Athlete
         </button>
-        <button @click="athleteStore.resetAthletes()">
+        <span style="margin:10px;"></span>
+        <button @click="athleteStore.resetAthletes()" class="btn btn-primary">
           Reset Athletes
         </button>
       </div>
@@ -88,10 +89,11 @@
               {{ athlete.personalBest }}
             </td>
             <td>
-              <button @click="athleteStore.removeAthlete(athlete.id)">
+              <button @click="athleteStore.removeAthlete(athlete.id)" class="icon-btn">
                 Remove
               </button>
-              <button @click="editAthlete(athlete.id)">
+              <span style="margin:10px"></span>
+              <button @click="editAthlete(athlete.id)" class="icon-btn">
                 Edit athlete
               </button>
             </td>
@@ -227,7 +229,7 @@ function sortBy(column: 'name' | 'country' | 'personalBest') {
 
 .stats span {
   font-size: 13px;
-  opacity: 0.6;
+  color: var(--color-text-muted);
 }
 
 .filters {
@@ -239,10 +241,10 @@ function sortBy(column: 'name' | 'country' | 'personalBest') {
 .filters input,
 .filters select {
   padding: 10px 12px;
-  border: 1px solid #2a2a2a;
-  border-radius: 6px;
-  background: transparent;
-  color: inherit;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
 }
 
 .filters input {
@@ -258,20 +260,6 @@ table {
   border-collapse: collapse;
 }
 
-th,
-td {
-  padding: 14px 16px;
-  text-align: left;
-  border-bottom: 1px solid #2a2a2a;
-}
-
-th {
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  opacity: 0.7;
-}
-
 .sortable {
   cursor: pointer;
   user-select: none;
@@ -285,10 +273,6 @@ th {
   font-weight: 600;
 }
 
-tbody tr:hover {
-  background: rgba(255, 255, 255, 0.03);
-}
-
 .empty-state {
   margin-top: 32px;
 }
@@ -298,6 +282,6 @@ tbody tr:hover {
 }
 
 .athlete-row:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--color-surface-hover);
 }
 </style>

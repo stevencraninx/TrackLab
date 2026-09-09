@@ -6,22 +6,18 @@
         <p>Manage and view Competitions.</p>
       </div>
       <div class="stats">
-          <div>
+          <div class="card">
             <strong>{{ competitionsCount }}</strong>
             <span>Competitions</span>
           </div>
-          <div>
+          <div class="card">
             <strong>{{ locationsCount }}</strong>
             <span>Locations</span>
           </div>
-          <div>
-            <strong>{{ latestCompetition }}</strong>
-            <span>Latest Competition</span>
-          </div>
         </div>
       </div>
-      <div class="header-actions">
-        <button @click="router.push('/competitions/new')">
+      <div class="header-actions" style="margin-bottom:15px">
+        <button @click="router.push('/competitions/new')" class="btn btn-primary">
           Add Competition
         </button>
       </div>
@@ -38,7 +34,7 @@
 
 
     <div class="table-container">
-    
+
       <table>
         <thead>
           <tr>
@@ -89,10 +85,11 @@
               {{ competition.type }}
             </td>
             <td>
-              <button @click="competitionStore.removeCompetition(competition.id)">
+              <button @click="competitionStore.removeCompetition(competition.id)" class="icon-btn">
                 Remove
               </button>
-              <button @click="editCompetition(competition.id)">
+              <span style="margin:10px"></span>
+              <button @click="editCompetition(competition.id)" class="icon-btn">
                 Edit competition
               </button>
             </td>
@@ -224,7 +221,7 @@ function sortBy(column: 'name' | 'location' | 'date' | 'type') {
 
 .stats span {
   font-size: 13px;
-  opacity: 0.6;
+  color: var(--color-text-muted);
 }
 
 .filters {
@@ -236,10 +233,10 @@ function sortBy(column: 'name' | 'location' | 'date' | 'type') {
 .filters input,
 .filters select {
   padding: 10px 12px;
-  border: 1px solid #2a2a2a;
-  border-radius: 6px;
-  background: transparent;
-  color: inherit;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
 }
 
 .filters input {
@@ -255,20 +252,6 @@ table {
   border-collapse: collapse;
 }
 
-th,
-td {
-  padding: 14px 16px;
-  text-align: left;
-  border-bottom: 1px solid #2a2a2a;
-}
-
-th {
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  opacity: 0.7;
-}
-
 .sortable {
   cursor: pointer;
   user-select: none;
@@ -280,10 +263,6 @@ th {
 
 .competition-name {
   font-weight: 600;
-}
-
-tbody tr:hover {
-  background: rgba(255, 255, 255, 0.03);
 }
 
 .empty-state {

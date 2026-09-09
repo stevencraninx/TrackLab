@@ -208,7 +208,7 @@ function goToAthlete(id: string) {
 
 .stats span {
   font-size: 13px;
-  opacity: 0.6;
+  color: var(--color-text-muted);
 }
 
 .filters {
@@ -220,10 +220,10 @@ function goToAthlete(id: string) {
 .filters input,
 .filters select {
   padding: 10px 12px;
-  border: 1px solid #2a2a2a;
-  border-radius: 6px;
-  background: transparent;
-  color: inherit;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
 }
 
 .filters input {
@@ -237,20 +237,6 @@ function goToAthlete(id: string) {
 table {
   width: 100%;
   border-collapse: collapse;
-}
-
-th,
-td {
-  padding: 14px 16px;
-  text-align: left;
-  border-bottom: 1px solid #2a2a2a;
-}
-
-th {
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  opacity: 0.7;
 }
 
 .sortable {
@@ -279,6 +265,6 @@ tbody tr:hover {
 }
 
 .athlete-row:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--color-surface-hover);
 }
 </style>

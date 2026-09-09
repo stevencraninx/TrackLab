@@ -39,7 +39,7 @@
       </select>
     </div>
 
-    <button type="submit">
+    <button type="submit" class="btn btn-primary">
       {{ submitLabel }}
     </button>
   </form>

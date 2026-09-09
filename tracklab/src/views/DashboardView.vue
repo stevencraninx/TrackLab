@@ -6,22 +6,22 @@
     </div>
 
     <div class="stats-grid">
-      <div class="stat-card" @click="$router.push(`/athletes`)">
+      <div class="card stat-card" @click="$router.push(`/athletes`)">
         <span>Athletes</span>
         <strong>{{ athleteCount }}</strong>
       </div>
 
-      <div class="stat-card" @click="$router.push(`/competitions`)">
+      <div class="card stat-card" @click="$router.push(`/competitions`)">
         <span>Competitions</span>
         <strong>{{ competitionCount }}</strong>
       </div>
 
-      <div class="stat-card" @click="$router.push(`/results`)">
+      <div class="card stat-card" @click="$router.push(`/results`)">
         <span>Results</span>
         <strong>{{ resultCount }}</strong>
       </div>
 
-      <div class="stat-card">
+      <div class="card stat-card">
         <span>Countries</span>
         <strong>{{ countryCount }}</strong>
       </div>
@@ -176,17 +176,6 @@ const recentResults = computed(() => {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-}
-
-.stat-card {
-  padding: 24px;
-  border: 1px solid #2a2a2a;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.02);
-  transition: 0.2s ease;
-
-  cursor: pointer;
-  transition: all 0.2s ease;
 }
 
 .stat-card:hover {

@@ -9,19 +9,19 @@
         <h1>{{ athlete.name }}</h1>
         <p>{{ athlete.country }}</p>
       </div>
-      <button @click="editAthlete">
+      <button @click="editAthlete" class="btn btn-primary">
         Edit athlete
       </button>
     </div>
 
     <div class="stats-grid">
-      <div class="stat-card">
-        <span>Personal Best</span>
+      <div class="card">
+        <span>Personal Best </span>
         <strong>{{ athlete.personalBest }}</strong>
       </div>
 
-      <div class="stat-card">
-        <span>Country</span>
+      <div class="card">
+        <span>Country </span>
         <strong>{{ athlete.country }}</strong>
       </div>
     </div>
@@ -189,23 +189,6 @@ function getCompetitionName(competitionId: string) {
   gap: 16px;
 }
 
-.stat-card {
-  padding: 20px;
-  border: 1px solid #2a2a2a;
-  border-radius: 8px;
-}
-
-.stat-card span {
-  display: block;
-  font-size: 13px;
-  opacity: 0.6;
-  margin-bottom: 8px;
-}
-
-.stat-card strong {
-  font-size: 24px;
-}
-
 .section {
   margin-top: 32px;
 }
@@ -223,20 +206,6 @@ table {
   border-collapse: collapse;
 }
 
-th,
-td {
-  padding: 14px 16px;
-  text-align: left;
-  border-bottom: 1px solid #2a2a2a;
-}
-
-th {
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  opacity: 0.7;
-}
-
 .sortable {
   cursor: pointer;
   user-select: none;
@@ -250,7 +219,4 @@ th {
   font-weight: 600;
 }
 
-tbody tr:hover {
-  background: rgba(255, 255, 255, 0.03);
-}
 </style>

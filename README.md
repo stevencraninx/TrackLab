@@ -6,7 +6,7 @@ TrackLab is a showcase application developed to demonstrate modern frontend deve
 
 The project was built as a hands-on exercise to deepen my Vue knowledge while applying professional software engineering principles such as component reusability, state management, routing, CRUD operations and dashboard visualisation.
 
-live demo: tracklab.onrender.com
+live demo: https://tracklab.onrender.com 
 
 ## Features
 ### Dashboard

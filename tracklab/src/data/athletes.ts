@@ -2,25 +2,25 @@ import type { Athlete } from '@/types/athlete'
 
 export const athletes: Athlete[] = [
   {
-    id: 1,
+    id: crypto.randomUUID(),
     name: 'Steven Peeters',
     country: 'BEL',
     personalBest: 9.82,
   },
   {
-    id: 2,
+    id: crypto.randomUUID(),
     name: 'Pieter Janssens',
     country: 'NED',
     personalBest: 9.94,
   },
   {
-    id: 3,
+    id: crypto.randomUUID(),
     name: 'Thomas Dupont',
     country: 'BEL',
     personalBest: 10.12,
   },
   {
-    id: 4,
+    id: crypto.randomUUID(),
     name: 'Max Müller',
     country: 'GER',
     personalBest: 10.05,

@@ -1,5 +1,5 @@
 export interface Athlete {
-  id: number
+  id: string
   name: string
   country: string
   personalBest: number

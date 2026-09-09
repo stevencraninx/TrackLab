@@ -110,10 +110,10 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
-function goToAthlete(id: number) {
+function goToAthlete(id: string) {
   router.push(`/athletes/${id}`)
 }
-function editAthlete(id: number) {
+function editAthlete(id: string) {
   router.push(`/athletes/${id}/edit`)
 }
 

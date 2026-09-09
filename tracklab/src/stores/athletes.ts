@@ -14,7 +14,7 @@ export const useAthleteStore = defineStore('athletes', () => {
       : [...initialAthletes]
   )
 
-  function getAthleteById(id: number) {
+  function getAthleteById(id: string) {
     return athletes.value.find((athlete) => athlete.id === id)
   }
 

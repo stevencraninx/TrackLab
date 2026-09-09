@@ -5,6 +5,7 @@ import AthletesView from '@/views/AthletesView.vue'
 import TrainingsView from '@/views/TrainingsView.vue'
 import AthleteDetailView from '@/views/AthleteDetailView.vue'
 import AthleteCreateView from '@/views/AthleteCreateView.vue'
+import AthleteEditView from '@/views/AthleteEditView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -30,6 +31,11 @@ const router = createRouter({
       path: '/athletes/new',
       name: 'add-athlete',
       component: AthleteCreateView,
+    },
+    {
+      path: '/athletes/:id/edit',
+      name: 'edit-athlete',
+      component: AthleteEditView,
     },
     {
       path: '/trainings',

@@ -24,11 +24,6 @@
         <span>Country</span>
         <strong>{{ athlete.country }}</strong>
       </div>
-
-      <div class="stat-card">
-        <span>Age</span>
-        <strong>{{ athlete.age }}</strong>
-      </div>
     </div>
 
     <div class="section">
@@ -49,14 +44,15 @@
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
-import { athletes } from '@/data/athletes'
+import { useAthleteStore } from '@/stores/athletes'
+const athleteStore = useAthleteStore()
 
 const route = useRoute()
 const router = useRouter()
 
 const athlete = computed(() => {
-  return athletes.find(
-    (athlete) => athlete.id === Number(route.params.id)
+  return athleteStore.getAthleteById(
+    route.params.id as string
   )
 })
 

@@ -13,6 +13,10 @@
         Athletes
       </RouterLink>
 
+      <RouterLink to="/competitions">
+        Competitions
+      </RouterLink>
+
       <RouterLink to="/trainings">
         Trainings
       </RouterLink>

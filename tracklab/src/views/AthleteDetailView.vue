@@ -1,7 +1,7 @@
 <template>
   <div v-if="athlete">
     <button class="back-button" @click="router.back()">
-      ← Back to athletes
+      ← Back
     </button>
 
     <div class="athlete-header">

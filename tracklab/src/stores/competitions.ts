@@ -1,7 +1,9 @@
 import { defineStore } from 'pinia'
 import { ref, watch } from 'vue'
 
+
 import type { Competition } from '@/types/competition'
+import { competitions as initialCompetitions } from '@/data/competitions'
 
 const STORAGE_KEY = 'tracklab-competitions'
 
@@ -11,11 +13,24 @@ export const useCompetitionStore = defineStore(
     const savedCompetitions =
       localStorage.getItem(STORAGE_KEY)
 
-    const competitions = ref<Competition[]>(
-      savedCompetitions
-        ? JSON.parse(savedCompetitions)
+      const saved = savedCompetitions
+        ? JSON.parse(savedCompetitions) as Competition[]
         : []
-    )
+
+      const combinedCompetitions = [
+        ...initialCompetitions,
+        ...saved.filter(
+          savedCompetition =>
+            !initialCompetitions.some(
+              initialCompetition =>
+                initialCompetition.id === savedCompetition.id
+            )
+        )
+      ]
+
+      const competitions = ref<Competition[]>(
+        combinedCompetitions
+      )
 
     function addCompetition(
       competition: Competition
